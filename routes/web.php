@@ -35,8 +35,14 @@ Route::get('/param/{id}/{number}',[HomeController::class,'param'])->name('param'
 // 6- Route with post
 Route::post('/save',[HomeController::class,'save'])->name('save');
 
-// 7 - Admin
-Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class,'index'] )->name('adminhome');
+// Admin panel routes
+
+Route::get('/admin', [\App\Http\Controllers\Admin\HomeController::class,'index'] )->name('admin');
+
+// Admin category routes
+Route::get('/admin/category', [\App\Http\Controllers\Admin\CategoryController::class,'index'] )->name('admin_category');
+Route::get('/admin/category/create', [\App\Http\Controllers\Admin\CategoryController::class,'create'] )->name('admin_category_create');
+
 
 
 Route::middleware([

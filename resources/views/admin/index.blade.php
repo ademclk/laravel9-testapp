@@ -1,7 +1,19 @@
-@extends('layouts.admin')
+@extends('layouts.adminbase')
 
-@section('title', 'Admin Panel Home Page')
+@section('title', 'Admin Panel')
+
 
 @section('content')
-    @include('admin._content')
+            <!-- Begin Page Content -->
+            <div class="container-fluid">z
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
 @endsection
