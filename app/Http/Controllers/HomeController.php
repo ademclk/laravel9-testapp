@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     //
     public function index(){
-        return view('home.index');
+        $sliderdata=Product::limit(10)->get();
+        $productlist1=Product::limit(10)->get();
+        return view('home.index',[
+            'sliderdata' => $sliderdata,
+            'productlist1' => $productlist1
+        ]);
     }
 
     public function test(){

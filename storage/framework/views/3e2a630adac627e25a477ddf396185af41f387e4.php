@@ -1,6 +1,10 @@
 <?php $__env->startSection('title', 'Add Product'); ?>
 
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('head'); ?>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+<?php $__env->stopSection(); ?>
+
+    <?php $__env->startSection('content'); ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -57,9 +61,19 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Detail</label>
-                                <textarea class="form-control" name="detail">
+                                <textarea class="form-control" id="detail" name="detail">
 
                                 </textarea>
+                                <script>
+                                    ClassicEditor
+                                        .create( document.querySelector( '#detail' ) )
+                                        .then( editor => {
+                                            console.log( editor );
+                                        } )
+                                        .catch( error => {
+                                            console.error( error );
+                                        } );
+                                </script>
                             </div>
 
                             <div class="form-group">

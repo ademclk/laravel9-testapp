@@ -19,6 +19,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('assets')}}/css/style.min.css" rel="stylesheet">
+
+
+
     @yield("head")
 </head>
 

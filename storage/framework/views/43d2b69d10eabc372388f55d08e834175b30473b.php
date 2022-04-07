@@ -1,23 +1,28 @@
 <?php $__env->startSection('title', 'Edit Product'.$data->title); ?>
 
+
+<?php $__env->startSection('head'); ?>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('content'); ?>
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Edit Category: <?php echo e($data -> title); ?></h1>
+        <h1 class="h3 mb-4 text-gray-800">Edit Product: <?php echo e($data -> title); ?></h1>
 
         <!-- Collapsable Card-->
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
                role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                <h6 class="m-0 font-weight-bold text-primary">Category Elements</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Product Elements</h6>
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample">
                 <div class="card-body">
-                    <form action="<?php echo e(route('admin_product_update', ['id' => $data ->id])); ?>" method="POST" enctype="multipart/form-data">
+                    <form action="<?php echo e(route('admin_category_update', ['id' => $data ->id])); ?>" method="POST" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('PUT'); ?>
 
@@ -60,10 +65,19 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Detail</label>
-                                <textarea class="form-control" name="detail">
-                                            <?php echo e($data->detail); ?>
+                                <textarea class="form-control" id="detail" name="detail">
 
                                 </textarea>
+                                <script>
+                                    ClassicEditor
+                                        .create( document.querySelector( '#detail' ) )
+                                        .then( editor => {
+                                            console.log( editor );
+                                        } )
+                                        .catch( error => {
+                                            console.error( error );
+                                        } );
+                                </script>
                             </div>
 
                             <div class="form-group">

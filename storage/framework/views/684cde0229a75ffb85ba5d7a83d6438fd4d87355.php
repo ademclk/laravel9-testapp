@@ -19,6 +19,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?php echo e(asset('assets')); ?>/css/style.min.css" rel="stylesheet">
+
+
+
     <?php echo $__env->yieldContent("head"); ?>
 </head>
 
