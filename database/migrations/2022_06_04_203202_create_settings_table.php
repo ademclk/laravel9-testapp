@@ -15,7 +15,25 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('title');
+            $table->string('keywords');
+            $table->string('description');
+            $table->string('company');
+            $table->string('address');
+            $table->string('phone');
+            $table->string('fax');
+            $table->string('email');
+            $table->string('smtpserver');
+            $table->string('smtpemail');
+            $table->string('smtppassword');
+            $table->string('smtpport');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('twitter');
+            $table->text('aboutus');
+            $table->text('contact');
+            $table->text('references');
+            $table->string('status');
         });
     }
 
