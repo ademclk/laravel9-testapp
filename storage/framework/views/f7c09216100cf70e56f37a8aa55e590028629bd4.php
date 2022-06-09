@@ -22,10 +22,8 @@
                                 <th style="width: 10px">Id</th>
                                 <th>Parent Id</th>
                                 <th>Title</th>
-                                <th>Keywords</th>
-                                <th>Description</th>
-                                <th>Image</th>
-                                <th>Status</th>
+                                <th style="width: 100px" >Image</th>
+                                <th style="width: 10px" >Status</th>
                                 <th style="width: 10px">Edit</th>
                                 <th style="width: 10px">Delete</th>
                                 <th style="width: 10px">Show</th>
@@ -35,10 +33,8 @@
                             <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td><?php echo e($rs -> id); ?></td>
-                                <td><?php echo e($rs -> parent_id); ?></td>
+                                <td> <?php echo e(\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)); ?> </td>
                                 <td><?php echo e($rs -> title); ?></td>
-                                <td><?php echo e($rs -> keywords); ?></td>
-                                <td><?php echo e($rs -> description); ?></td>
                                 <td>
                                     <?php if($rs->image): ?>
                                     <img src="<?php echo e(Storage::url($rs->image)); ?>" style="height: 50px">

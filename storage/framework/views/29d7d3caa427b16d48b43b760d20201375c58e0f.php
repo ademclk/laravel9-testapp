@@ -20,6 +20,16 @@
                             <form action="<?php echo e(route('admin_category_store')); ?>" method="POST" enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
                                 <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label >Parent Category</label>
+                                        <select class="form-control select2" name="parent_id" >
+                                            <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="1" selected="selected">Main Category</option> <option value="<?php echo e($rs->id); ?>"> <?php echo e(\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title)); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Title</label>
                                         <input type="text" class="form-control" name="title" placeholder="Title">
