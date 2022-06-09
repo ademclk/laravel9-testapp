@@ -1,8 +1,6 @@
-@extends('layouts.adminbase')
+<?php $__env->startSection('title', 'Add Category'); ?>
 
-@section('title', 'Add Category')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
@@ -19,8 +17,8 @@
                     <!-- Card Content - Collapse -->
                     <div class="collapse show" id="collapseCardExample">
                         <div class="card-body">
-                            <form action="{{route('admin_category_store')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <form action="<?php echo e(route('admin_category_store')); ?>" method="POST" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Title</label>
@@ -68,5 +66,7 @@
         </div>
         <!-- End of Main Content -->
 
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.adminbase', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/ademclk/PhpstormProjects/testapp/resources/views/admin/category/create.blade.php ENDPATH**/ ?>
