@@ -19,7 +19,7 @@
                     <!-- Card Content - Collapse -->
                     <div class="collapse show" id="collapseCardExample">
                         <div class="card-body">
-                            <form action="/admin/category/store" method="POST">
+                            <form action="{{route('admin_category_store')}}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -50,8 +50,8 @@
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select class="custom-select" name="status">
-                                            <option>Enable</option>
-                                            <option>Disable</option>
+                                            <option>Enabled</option>
+                                            <option>Disabled</option>
                                         </select>
                                     </div>
                                     </div>

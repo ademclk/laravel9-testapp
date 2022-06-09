@@ -38,16 +38,21 @@ Route::get('/param/{id}/{number}',[HomeController::class,'param'])->name('param'
 Route::post('/save',[HomeController::class,'save'])->name('save');
 
 // Admin panel route
-Route::get('/admin', [AdminHomeController::class,'index'] )->name('admin');
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
 
 // Admin category routes
-Route::get('/admin/category', [AdminCategoryController::class,'index'] )->name('admin_category');
-Route::get('/admin/category/create', [AdminCategoryController::class,'create'] )->name('admin_category_create');
-Route::post('/admin/category/store', [AdminCategoryController::class,'store'] )->name('admin_category_store');
-Route::get('/admin/category/edit/{id}', [AdminCategoryController::class,'edit'] )->name('admin_category_edit');
-Route::put('/admin/category/update/{id}', [AdminCategoryController::class,'update'] )->name('admin_category_update');
-
-
+    Route::prefix('category')->name('admin_category_')->controller(AdminCategoryController::class)->group(function () {
+    Route::get('', 'index')->name('');
+    Route::get('/create','create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}','edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+});
 
 Route::middleware([
     'auth:sanctum',

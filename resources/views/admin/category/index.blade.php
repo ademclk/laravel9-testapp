@@ -7,12 +7,14 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Category List</h1>
-
+                <a href="{{route('admin_category_create')}}" class="btn btn-info">Add category</a>
             </div>
+            <p>
+
+            </p>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Category List</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -41,9 +43,10 @@
                                 <td>{{$rs -> description}}</td>
                                 <td>{{$rs -> image}}</td>
                                 <td>{{$rs -> status}}</td>
-                                <td><a href="/admin/category/edit/{{$rs -> id}}" class="btn btn-primary btn-icon-split" >Edit</a> </td>
-                                <td><a href="/admin/category/delete/{{$rs -> id}}" class="btn btn-info btn-icon-split" >Delete</a> </td>
-                                <td><a href="/admin/category/show/{{$rs -> id}}" class="btn btn-danger btn-icon-split" >Show</a> </td>
+                                <td><a href="{{route('admin_category_edit', ['id' => $rs -> id])}}" class="btn btn-primary " >Edit</a> </td>
+                                <td><a href="{{route('admin_category_destroy', ['id' => $rs -> id])}}" class="btn btn-info "
+                                    onclick="return confirm('You\'re about the delete the item. Sure? ')">Delete</a> </td>
+                                <td><a href="{{route('admin_category_show', ['id' => $rs -> id])}}" class="btn btn-danger " >Show</a> </td>
                             </tr>
                             @endforeach
                             </tbody>

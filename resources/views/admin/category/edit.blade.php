@@ -19,7 +19,7 @@
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample">
                 <div class="card-body">
-                    <form action="/admin/category/update/{{$data->id}}" method="POST">
+                    <form action="{{route('admin_category_update', ['id' => $data ->id])}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-body">

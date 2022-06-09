@@ -56,9 +56,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category,$id)
     {
         //
+        $data = Category::find($id);
+        return view('admin.category.show', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -102,8 +106,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
         //
+        Category::destroy($id);
+        echo "Succesfully deleeted", $id;
+        return redirect('admin/category');
+
     }
 }
