@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use \App\Http\Controllers\Admin\ProductController as AdminProductController;
+use \App\Http\Controllers\Admin\ImageController as AdminImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+    // Admin image routes
+    Route::prefix('image')->name('admin_image_')->controller(AdminImageController::class)->group(function () {
+        Route::get('/{pid}', 'index')->name('index');
+        Route::post('/store/{pid}', 'store')->name('store');
+        Route::get('/destroy/{pid}/{id}', 'destroy')->name('destroy');
     });
 });
 

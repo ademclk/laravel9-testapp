@@ -25,6 +25,7 @@
                         <th>Price</th>
                         <th>Months</th>
                         <th style="width: 100px" >Image</th>
+                        <th style="width: 100px" >Image Gallery</th>
                         <th style="width: 10px" >Status</th>
                         <th style="width: 10px">Edit</th>
                         <th style="width: 10px">Delete</th>
@@ -43,6 +44,10 @@
                                 <?php if($rs->image): ?>
                                     <img src="<?php echo e(Storage::url($rs->image)); ?>" style="height: 50px">
                                 <?php endif; ?>
+                            </td>
+                            <td> <a href="<?php echo e(route('admin_image_index', ['pid' => $rs -> id])); ?>"  onclick="return !window.open(this.href, '', 'top=50 left=100 width=1100, height=700')">
+                                <img src="<?php echo e(asset('assets')); ?>/admin/img/imagegallery.png" style="height: 50px">
+                                </a>
                             </td>
                             <td><?php echo e($rs -> status); ?></td>
                             <td><a href="<?php echo e(route('admin_product_edit', ['id' => $rs -> id])); ?>" class="btn btn-primary " >Edit</a> </td>

@@ -46,7 +46,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = new Product();
-        $data-> category_id = $request->category_id;
+        // With validation , you can control what kind of data you want to get in your server side.
+        // Server side errors to client side errors.
+        $validated = $request->validate([
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        if ($validated){
+            $data-> category_id = $request->category_id;
+        }
         $data->user_id = 0; // $request->user_id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
