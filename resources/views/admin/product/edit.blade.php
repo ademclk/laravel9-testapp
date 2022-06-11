@@ -1,20 +1,20 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Edit Category'.$data->title)
+@section('title', 'Edit Product'.$data->title)
 
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Edit Product: {{$data -> title}}</h1>
+        <h1 class="h3 mb-4 text-gray-800">Edit Category: {{$data -> title}}</h1>
 
         <!-- Collapsable Card-->
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
                role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                <h6 class="m-0 font-weight-bold text-primary">Product Elements</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Category Elements</h6>
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapseCardExample">
@@ -27,9 +27,9 @@
 
                             <div class="form-group">
                                 <label >Parent Category</label>
-                                <select class="form-control select2" name="parent_id" >
+                                <select class="form-control select2" name="category_id" >
                                     @foreach ($datalist as $rs)
-                                        <option value="{{ $rs->id }}" @if($rs-> id == $data ->parent_id) selected ="selected" @endif>
+                                        <option value="{{ $rs->id }}" @if($rs-> id == $data ->category_id) selected ="selected" @endif>
                                             {{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title) }}
                                         </option>
                                     @endforeach
@@ -47,6 +47,23 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Description</label>
                                 <input type="text" class="form-control" name="description" value="{{$data->description}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Price</label>
+                                <input type="number" class="form-control" name="price" value="{{$data->price}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Months</label>
+                                <input type="number" class="form-control" name="months" value="{{$data->months}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Detail</label>
+                                <textarea class="form-control" name="detail">
+                                            {{$data->detail}}
+                                </textarea>
                             </div>
 
                             <div class="form-group">

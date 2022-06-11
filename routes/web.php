@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use \App\Http\Controllers\Admin\ProductController as AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,18 @@ Route::prefix('admin')->group(function () {
     Route::get('/edit/{id}', 'edit')->name('edit');
     Route::get('/show/{id}', 'show')->name('show');
     Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+    // Admin product routes
+    Route::prefix('product')->name('admin_product_')->controller(AdminProductController::class)->group(function () {
+        Route::get('', 'index')->name('');
+        Route::get('/create','create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 });
 

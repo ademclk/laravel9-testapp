@@ -1,23 +1,23 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Show Category')
+@section('title', 'Show Product')
 
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <a href="{{route('admin_category_edit', ['id' => $data ->id])}}" class="btn btn-info">Edit category</a>
+        <a href="{{route('admin_product_edit', ['id' => $data ->id])}}" class="btn btn-info">Edit product</a>
 
-        <a href="{{route('admin_category_destroy', ['id' => $data ->id])}}" class="btn btn-danger"
-           onclick="return confirm('You\'re about the delete the item. Sure? ')" >Delete category</a>
+        <a href="{{route('admin_product_destroy', ['id' => $data ->id])}}" class="btn btn-danger"
+           onclick="return confirm('You\'re about the delete the item. Sure? ')" >Delete product</a>
 
         <p>
         </p>
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Show Category {{$data->title}}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Show Product {{$data->title}}</h6>
             </div>
             <div class="card">
                 <!-- /.card-header -->
@@ -26,6 +26,10 @@
                         <tr>
                             <th style="width: 30px">Id</th>
                             <td>{{$data->id}}</td>
+                        </tr>
+                        <tr>
+                            <th style="width: 30px">Category</th>
+                            <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($data->category, $data->category->title)}}</td>
                         </tr>
                         <tr>
                             <th style="width: 30px">Title</th>
@@ -37,7 +41,24 @@
                         </tr>
                         <tr>
                             <th style="width: 30px">Image</th>
-                            <td>{{$data->image}}</td>
+                            <td> @if($data->image)
+                                    <img src="{{Storage::url($data->image)}}" style="height: 150px">
+                                @endif</td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th style="width: 30px">Price</th>
+                            <td>{{$data->price}}</td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th style="width: 30px">Months</th>
+                            <td>{{$data->months}}</td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <th style="width: 30px">Detail</th>
+                            <td>{{$data->detail}}</td>
                         </tr>
                         <tr>
                             <th style="width: 30px">Status</th>
