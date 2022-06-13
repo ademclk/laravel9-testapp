@@ -67,3 +67,5 @@
 
 <!-- Template Javascript -->
 <script src="{{asset('assets')}}/js/main.js"></script>
+<script src="{{asset('assets')}}/js/main2.js"></script>
+

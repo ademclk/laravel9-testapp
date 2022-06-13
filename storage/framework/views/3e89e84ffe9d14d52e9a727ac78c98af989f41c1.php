@@ -178,7 +178,7 @@
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                 <h6 class="text-truncate mb-3"><?php echo e($rs->title); ?></h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>Price: <?php echo e($rs->price); ?></h6>
+                                    <h6>Price: <?php echo e($rs->price); ?> ₺</h6>
                                 </div>
                                 <h6><?php echo e($rs->months); ?> Months</h6>
                             </div>

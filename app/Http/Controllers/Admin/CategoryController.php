@@ -119,7 +119,12 @@ class CategoryController extends Controller
     {
         //
         $data = Category::find($id);
-        $data->parent_id = $request->parent_id;
+        $validated = $request->validate([
+            'parent_id' => 'required|exists:products,id',
+        ]);
+        if ($validated && $request->parent_id !=NULL ){
+            $data->parent_id = $request->parent_id;
+        }
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;

@@ -51,7 +51,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
         ]);
-        if ($validated){
+        if ($validated && $request->category_id !=NULL ){
             $data-> category_id = $request->category_id;
         }
         $data->user_id = 0; // $request->user_id;
@@ -112,7 +112,12 @@ class ProductController extends Controller
     {
         //
         $data = Product::find($id);
-        $data->category_id = $request->category_id;
+        $validated = $request->validate([
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        if ($validated && $request->category_id !=NULL ){
+            $data-> category_id = $request->category_id;
+        }
         $data->user_id = 0; // $request->user_id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
